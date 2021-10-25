@@ -1,10 +1,11 @@
 import textwrap
 
-from django.db import models
 from django.contrib.auth import get_user_model
-
+from django.core.exceptions import ValidationError
+from django.db import models
 from titles.models import Title
-from .validators import score_validation
+
+from .validators import UNIQUE_REVIEW_VALIDATION_MESSAGE, score_validation
 
 User = get_user_model()
 
@@ -40,6 +41,13 @@ class Review(models.Model):
         ordering = ('-pub_date', )
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
+        unique_together = ('author', 'title')
+
+    def clean(self):
+        print(self.__dict__)
+        filter = Review.objects.filter(author=self.author, title=self.title)
+        if filter.exists():
+            raise ValidationError(UNIQUE_REVIEW_VALIDATION_MESSAGE)
 
     def __str__(self):
         fullname = self.author.get_full_name()

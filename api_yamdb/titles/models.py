@@ -1,5 +1,8 @@
 from django.db import models
 
+ERROR_MESSAGES = {'MinValueValidator': 'Записи не должны быть старше 19 века',
+                  'MaxValueValidator': 'Треки не должны быть из будущего'}
+
 
 class Catergory(models.Model):
     name = models.CharField('Имя Категории', max_length=100)
@@ -8,6 +11,7 @@ class Catergory(models.Model):
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
+        ordering = ('name',)
 
     def __str__(self) -> str:
         return f'{self.name}'
@@ -20,6 +24,7 @@ class Genre(models.Model):
     class Meta:
         verbose_name = 'Жанр'
         verbose_name_plural = 'Жанры'
+        ordering = ('name',)
 
     def __str__(self) -> str:
         return f'{self.name}'
@@ -27,12 +32,13 @@ class Genre(models.Model):
 
 class Title(models.Model):
     name = models.CharField('Имя Произведения', max_length=200)
-    year = models.IntegerField('Год Выпуска')
+    year = models.PositiveSmallIntegerField('Год Выпуска',
+                                            db_index=True,
+                                            error_messages=ERROR_MESSAGES)
     description = models.TextField(
         'Описание Произведения',
         blank=True,
     )
-    rating = models.IntegerField('Рейтинг', default=0)
     genre = models.ManyToManyField(
         Genre,
         related_name='titles',
@@ -50,6 +56,7 @@ class Title(models.Model):
     class Meta:
         verbose_name = 'Произведение'
         verbose_name_plural = 'Произведения'
+        ordering = ('name',)
 
     def __str__(self) -> str:
         return f'{self.name} {self.year}'
