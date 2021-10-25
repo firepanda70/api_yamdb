@@ -46,3 +46,13 @@ python3 manage.py migrate
 ```
 python3 manage.py runserver
 ```
+
+# Авторы
+[thelie](https://github.com/thelie) - управление пользователями (Auth и Users): система регистрации и аутентификации, права доступа, работа с токеном, система подтверждения e-mail, поля.
+
+[IPfa](https://github.com/IPfa) - категории (Categories), жанры (Genres) и произведения (Titles): модели, view и эндпойнты для них.
+
+[firepanda70](https://github.com/firepanda70) - отзывы (Review) и комментарии (Comments): модели и view, эндпойнты, права доступа для запросов. Рейтинги произведений.
+
+# Лицензия
+MIT License
