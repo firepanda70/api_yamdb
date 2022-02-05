@@ -1,9 +1,11 @@
-# Описание
+# Проект API YaMDBb
+
+### Описание
 
 API для системы хранения отзывов
 к произведениям культуры
 
-# Установка
+### Установка
 
 - Клонировать репозиторий и перейти в него в командной строке:
 
@@ -38,12 +40,19 @@ python3 manage.py migrate
 python3 manage.py runserver
 ```
 
-# Авторы
+### Авторы
 [thelie](https://github.com/thelie) - управление пользователями (Auth и Users): система регистрации и аутентификации, права доступа, работа с токеном, система подтверждения e-mail, поля.
 
 [IPfa](https://github.com/IPfa) - категории (Categories), жанры (Genres) и произведения (Titles): модели, view и эндпойнты для них.
 
 [firepanda70](https://github.com/firepanda70) - отзывы (Review) и комментарии (Comments): модели и view, эндпойнты, права доступа для запросов. Рейтинги произведений.
+
+### Технологии
+- Python 3
+- Django
+- Django REST Framework
+- SQLite3
+- Simple-JWT
 
 # Лицензия
 MIT License
