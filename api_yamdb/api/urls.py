@@ -10,7 +10,7 @@ from users.views import UserViewSet, get_confirmation_code, get_token
 app_name = 'users'
 
 router_v1 = DefaultRouter()
-router_v1.register(prefix='users', viewset=UserViewSet, basename="user")
+router_v1.register(prefix='users', viewset=UserViewSet, basename='user')
 router_v1.register('titles', TitleListCreateViewSet, basename='titles')
 router_v1.register(
     'titles',
