@@ -38,7 +38,7 @@ python3 manage.py migrate
 - Добавить тестовые данные:
 ```
 python3 manage.py loaddata fixtures.json
-# Сурюзер тестовых данных: admin
+# Суперюзер тестовых данных: admin
 # Пароль: admin
 ```
 - Запустить проект:
